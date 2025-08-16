@@ -1,5 +1,5 @@
-from ..models.item_model import ItemModel
-from ..schemas.item_schema import NewTodoItem, UpdateTodoItem, ResponseTodoItem
+from app.models.item_model import ItemModel
+from app.schemas.item_schema import NewTodoItem, UpdateTodoItem, ResponseTodoItem
 
 from app.const import TodoItemStatusCode
 from sqlalchemy.orm import Session
@@ -76,9 +76,7 @@ def delete_todo_item(db: Session, todo_list_id, todo_item_id):
             .first()
         )
         db.delete(db_item)
-
         db.commit()
-
         return {}
     finally:
         db.close()

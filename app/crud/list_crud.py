@@ -1,5 +1,5 @@
-from ..models.list_model import ListModel
-from ..schemas.list_schema import NewTodoList, UpdateTodoList, ResponseTodoList
+from app.models.list_model import ListModel
+from app.schemas.list_schema import NewTodoList, UpdateTodoList
 
 from sqlalchemy.orm import Session
 
