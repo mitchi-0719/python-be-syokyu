@@ -4,6 +4,15 @@ from app.schemas.list_schema import NewTodoList, UpdateTodoList
 from sqlalchemy.orm import Session
 
 
+def get_todo_lists(db: Session, page, per_page):
+    try:
+        offset = (page - 1) * per_page
+        db_item = db.query(ListModel).offset(offset).limit(per_page).all()
+        return db_item
+    finally:
+        db.close()
+
+
 def get_todo_list(db: Session, todo_list_id):
     try:
         db_item = db.query(ListModel).filter(ListModel.id == todo_list_id).first()
